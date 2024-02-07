@@ -1,3 +1,5 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+var log = new LoggerConfiguration()
+    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

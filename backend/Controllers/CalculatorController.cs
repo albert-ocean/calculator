@@ -1,5 +1,6 @@
 using System.Numerics;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace backend.Controllers;
 
@@ -7,6 +8,10 @@ namespace backend.Controllers;
 [Route("calculator")]
 public class CalculatorController : ControllerBase
 {
+
+    private readonly Serilog.Core.Logger _log = new LoggerConfiguration()
+    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
     private readonly ILogger<CalculatorController> _logger;
 
@@ -20,6 +25,7 @@ public class CalculatorController : ControllerBase
     // if using float or double, you can get wrong results like 0.1 + 0.2 = 0.30000000000000004
     public IActionResult Add(decimal x, decimal y)
     {
+        _log.Information("received request: {x} + {y}, {date}", x, y, DateTime.UtcNow.ToLongTimeString());
         return Ok(x + y);
     }
 
@@ -27,6 +33,7 @@ public class CalculatorController : ControllerBase
     [HttpPost(Name = "substract")]
     public IActionResult Substract(decimal x, decimal y)
     {
+        _log.Information("received request: {x} - {y}, {date}", x, y, DateTime.UtcNow.ToLongTimeString());
         return Ok(x - y);
     }
 
@@ -34,6 +41,7 @@ public class CalculatorController : ControllerBase
     [HttpPost(Name = "multiply")]
     public IActionResult Multiply(decimal x, decimal y)
     {
+        _log.Information("received request: {x} * {y}, {date}", x, y, DateTime.UtcNow.ToLongTimeString());
         return Ok(x * y);
     }
 
@@ -41,6 +49,7 @@ public class CalculatorController : ControllerBase
     [HttpPost(Name = "divide")]
     public IActionResult Divide(decimal x, decimal y)
     {
+        _log.Information("received request: {x} / {y}, {date}", x, y, DateTime.UtcNow.ToLongTimeString());
         if(y == 0){
             return BadRequest();
         }
