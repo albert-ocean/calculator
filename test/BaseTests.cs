@@ -1,7 +1,7 @@
 using backend.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Tests;
+namespace test;
 
 public class BaseTests
 {
