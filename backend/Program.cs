@@ -1,4 +1,3 @@
-using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,18 +10,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-var log = new LoggerConfiguration()
-    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
