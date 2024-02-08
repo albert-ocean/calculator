@@ -10,7 +10,7 @@ function Operation( {op} ) {
     const [result, setResult] = useState(" ");
 
     const src = op + ".png";
-    const url = 'http://localhost:5218/calculator/' + op;
+    const url = 'http://localhost:5218/calculator/api/v2' + op;
 
     const calculate = () => {
 

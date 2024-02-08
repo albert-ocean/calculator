@@ -5,7 +5,7 @@ using Serilog;
 namespace backend.Controllers;
 
 [ApiController]
-[Route("calculator")]
+[Route("calculator/api/v2")]
 public class CalculatorController : ControllerBase
 {
 
