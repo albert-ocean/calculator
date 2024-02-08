@@ -29,9 +29,9 @@ public class CalculatorController : ControllerBase
         return Ok(x + y);
     }
 
-    [Route("substract")]
-    [HttpPost(Name = "substract")]
-    public IActionResult Substract(decimal x, decimal y)
+    [Route("subtract")]
+    [HttpPost(Name = "subtract")]
+    public IActionResult Subtract(decimal x, decimal y)
     {
         _log.Information("received request: {x} - {y}, {date}", x, y, DateTime.UtcNow.ToLongTimeString());
         return Ok(x - y);

@@ -28,7 +28,7 @@ public class BaseTests
     [Fact]
     public void SubtractTest()
     {
-        var result = controller.Substract((decimal)1, (decimal)2) as ObjectResult;
+        var result = controller.Subtract((decimal)1, (decimal)2) as ObjectResult;
         Assert.True(result != null);
         Assert.Equal(result.Value, (decimal)(-1));
     }
