@@ -41,6 +41,10 @@ If you want to deploy yourself, be advised:
 
 This is a problem of arbitrary-precision calculation. In Java or C/C++, you have scientific libraries for that, but not in C#. Luckily, c# has decimal type which is good enough for most situations including financial calculations thanks to its high precision (26 ~ 27 bits of precision, in comparison, float only guarantees 6 ~ 7 bits of precisions).
 
+        Design
+
+The specs is very specific about the design of endpoints: receiving two numbers and output the result number, and this project did exactly as told. But a better design idea for a calculator would be to evaluate the math expression as a string. There are several popular libraries for this including Matheval. 
+
         Testing
 
 Tests are written for controllers, using xUnit framework. Testing is implemented in C# using a standalone project which links to your original test. To run tests, go to /tests folder and run $ dotnet test
@@ -63,14 +67,16 @@ There are two dockerfiles, one for bakcend and one for frontend. They are divide
 
 ### frontend
 
-        framework
+        Framework
 
 Frontend is implemented using react and material-ui. The page consists of several components.
 
-        colors
+        Colors
 
 Each you time you refresh the page, colors are randomized using useEffect(). 
 
-        calculation result
+        Calculation result
 
-Calculation results update automatically to user inputs, no clicking needed. Tempering with the result is not possible, but you can select and copy results
+All calculations are performed in backend, including the logic of dividing by zero (should it equal to infinity or be completely prohibited), as required in the spec.
+
+Calculation results update automatically to user inputs, no clicking needed. Tempering with the result is not possible, but you can select and copy results.
