@@ -33,9 +33,13 @@ If you want to deploy yourself, be advised:
 * modern browsers require the communication between frontend and backend to use https, you so need to wrap the backend in an aws application load balancer.
 * AWS advertises EKS as a managed k8s service, but you still need to install the AWS Load Balancer Controller yourself. 
 
+<br>
+
 ## Implementation
 
-### backend
+<br>
+
+### Backend
 
         The infamous 0.1 + 0.2 != 0.3 problem
 
@@ -44,6 +48,10 @@ This is a problem of arbitrary-precision calculation. In Java or C/C++, you have
         Design
 
 The specs is very specific about the design of endpoints: receiving two numbers and output the result number, and this project did exactly as told. But a better design idea for a calculator would be to evaluate the math expression as a string. There are several popular libraries for this including Matheval. 
+
+        Versioning
+
+This project supports versioning of backend API, as given in the path: api.albert-ocean.com/calculator/api/v2/...
 
         Testing
 
@@ -65,7 +73,11 @@ ASP.NET offers https connections but I decided to use AWS application load balan
 
 There are two dockerfiles, one for bakcend and one for frontend. They are divided into layers for faster incremental updates.
 
-### frontend
+<br>
+
+### Frontend
+
+This minimalist frontend is for demo purpose.
 
         Framework
 
