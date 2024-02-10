@@ -10,7 +10,9 @@ function Operation( {op} ) {
     const [result, setResult] = useState(" ");
 
     const src = op + ".png";
-    const url = 'http://localhost:5218/calculator/api/v2' + op;
+    const url = 'https://api.albert-ocean.com/calculator/api/v2/' + op;
+    // const url = 'http://localhost:8080/calculator/api/v2/' + op;
+
 
     const calculate = () => {
 
@@ -21,8 +23,13 @@ function Operation( {op} ) {
             }
         }).then(response => {
             setResult(response.data)
-        }).catch(e => {
-            setResult("invalid input")
+        }).catch(error => {
+            console.log(error)
+            if(error && error.code !== "ERR_BAD_REQUEST"){
+                alert("server error")
+            }else{
+                setResult("invalid input")
+            }
         })
 
     }
