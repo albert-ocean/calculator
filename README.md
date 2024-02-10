@@ -79,4 +79,4 @@ Each you time you refresh the page, colors are randomized using useEffect().
 
 All calculations are performed in backend, including the logic of dividing by zero (should it equal to infinity or be completely prohibited), as required in the spec.
 
-Calculation results update automatically to user inputs, no clicking needed. Tempering with the result is not possible, but you can select and copy results.
+Calculation results update automatically to user inputs, no user-clicking is involved. Tempering with the result is not possible, but you can select and copy results.
