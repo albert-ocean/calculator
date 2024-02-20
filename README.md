@@ -6,6 +6,7 @@
 
 ### live action
 * https://calculator.albert-ocean.com
+* note: this project is dropped. live action no longer works. resources are released. 
 
 ### run local
 * go to /backend, run 
